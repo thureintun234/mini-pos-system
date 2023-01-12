@@ -1,0 +1,26 @@
+.category__list {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  gap: 0.6rem;
+  margin-left: -3rem !important;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    background-color: var(--unselected-color);
+    color: var(--black-color);
+    padding: 0.4rem 0.6rem;
+    border-radius: 16px;
+    cursor: pointer;
+  }
+
+  .selected {
+    background-color: var(--button-color);
+    color: var(--white-color);
+  }
+}

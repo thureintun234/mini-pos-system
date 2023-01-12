@@ -8,6 +8,8 @@
   --black-color: #101828;
   --label-color: #344054;
   --button-color: #2e3ea1;
+  --unselected-color: #f2f4f7;
+  --blur-color: #eef1ff;
 }
 
 body {

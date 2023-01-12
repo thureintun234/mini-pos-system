@@ -11,6 +11,7 @@ const LoginLogo = () => {
       <div className='login__logo-nav'>
         <img src={logo} alt='logo' />
       </div>
+
       {/* main */}
       <div className='login__logo-main'>
         <div>
@@ -22,7 +23,6 @@ const LoginLogo = () => {
             );
           })}
         </div>
-
         <h2>
           KLink has saved us thousands of hours of work. We’re able to spin up
           projects and features much faster.
@@ -34,6 +34,7 @@ const LoginLogo = () => {
           <p className='title'>Product Designer, Sisyphus</p>
         </div>
       </div>
+
       {/* footer */}
       <div className='footer'>
         <p>© klinkenterprise.com</p>

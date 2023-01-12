@@ -1,0 +1,39 @@
+.products {
+  display: flex;
+  flex-direction: row;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+
+  .product__card {
+    width: 12rem;
+    background-color: var(--white-color);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 16px;
+    cursor: pointer;
+
+    .product__card-img {
+      img {
+        width: 12rem;
+        height: 14rem;
+        object-fit: cover;
+      }
+    }
+
+    .product__card-title {
+      color: var(--black-color);
+      font-weight: bold;
+      font-size: 16px;
+      margin: 0.6rem 0;
+    }
+
+    .product__card-price {
+      color: var(--main-color);
+      font-weight: bold;
+
+      span {
+        font-weight: bolder;
+        font-size: 22px;
+      }
+    }
+  }
+}
