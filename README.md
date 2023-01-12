@@ -29,7 +29,6 @@ yarn run start
 yarn run dev
 ```
 
-```
-The Frontend is running on `http://localhost:3000`
-The server is running by accessing `http://localhost:4000`
-```
+- [Frontend](http://localhost:3000/) This is a frontend part of the project hosted in Netlify.
+
+- [REST API](http://localhost:4000/api) This is the hosted api.

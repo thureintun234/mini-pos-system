@@ -1,0 +1,9 @@
+.login-container {
+  display: flex;
+  flex-direction: row;
+  height: 120vh;
+
+  .login {
+    width: 50%;
+  }
+}
