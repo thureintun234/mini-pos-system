@@ -119,7 +119,10 @@ const Home = () => {
 
   const onSearch = (category) => {
     console.log(category);
-    getAll(category).then((res) => setProducts(res));
+    getAll(category).then((res) => {
+      console.log(res);
+      setProducts(res);
+    });
   };
 
   const onOrder = () => {

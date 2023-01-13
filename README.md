@@ -29,6 +29,6 @@ yarn run start
 yarn run dev
 ```
 
-- [Frontend](https://mini-pos-system.vercel.app/dashboard) This is a frontend part of the project hosted on Vercel.
+- [Frontend](https://mini-pos-system.vercel.app/) This is a frontend part of the project hosted on Vercel.
 
 - [REST API](https://mini-pos-system.onrender.com/api) This is the REST api hosted on Render.
