@@ -11,7 +11,7 @@ const Navbar = ({
   isOpen = false,
   search,
   onChange,
-  onSearch
+  onSearch,
 }) => {
   return (
     <nav className='nav'>
@@ -22,7 +22,7 @@ const Navbar = ({
         <div className='nav-search'>
           <input
             type='text'
-            placeholder='Search'
+            placeholder='Search by category'
             value={search}
             onChange={onChange}
           />
