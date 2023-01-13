@@ -29,6 +29,6 @@ yarn run start
 yarn run dev
 ```
 
-- [Frontend](http://localhost:3000/) This is a frontend part of the project hosted in Netlify.
+- [Frontend](https://mini-pos-system.vercel.app/dashboard) This is a frontend part of the project hosted on Vercel.
 
-- [REST API](http://localhost:4000/api) This is the hosted api.
+- [REST API](https://mini-pos-system.onrender.com/api) This is the REST api hosted on Render.
