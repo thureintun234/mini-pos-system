@@ -1,20 +1,28 @@
 import React from 'react';
+import defaultImage from '../../../assets/default.png';
 
 import './products.scss';
 
-const Products = ({ mockData, onSelect }) => {
+const Products = ({ products, onSelect }) => {
   return (
     <div className='products'>
-      {mockData.map((data) => (
+      {products.map((data) => (
         <div
           className='product__card'
-          key={data.id}
-          onClick={() => onSelect(data.id)}
+          key={data._id}
+          onClick={() => onSelect(data._id)}
         >
           <div className='product__card-img'>
-            <img src={data.image} alt={data.title} />
+            <img
+              src={
+                data.image
+                  ? `https://mini-pos-system.onrender.com/images/${data.image}`
+                  : defaultImage
+              }
+              alt={data.name}
+            />
           </div>
-          <div className='product__card-title'>{data.title}</div>
+          <div className='product__card-title'>{data.name}</div>
           <div className='product__card-price'>
             ks <span>{data.price}</span>
           </div>

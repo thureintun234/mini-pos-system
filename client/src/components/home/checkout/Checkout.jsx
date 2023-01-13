@@ -1,6 +1,21 @@
 import React from 'react';
+import defaultImage from '../../../assets/default.png';
 
-const Checkout = ({ closeModal, selectedItems }) => {
+const Checkout = ({
+  closeModal,
+  selectedItems,
+  handleRemove,
+  onAdd,
+  onRemove,
+  onOrder,
+}) => {
+  const totalPrice = selectedItems.reduce(
+    (accu, item) => accu + item.price * (item.count || 1),
+    0
+  );
+  const taxPercentage = 5 / 100;
+  const taxPrice = Math.floor(totalPrice * taxPercentage);
+
   return (
     <>
       <div className='checkout__form'>
@@ -14,22 +29,40 @@ const Checkout = ({ closeModal, selectedItems }) => {
         {/* item info */}
         <div className='checkout-items'>
           {selectedItems.map((data) => (
-            <div className='checkout__item' key={data.id}>
+            <div className='checkout__item' key={data._id}>
               {/* item image */}
               <div className='checkout__item-img'>
-                <img src={data.image} alt={data.title} />
+                <img
+                  src={
+                    data.image
+                      ? `https://mini-pos-system.onrender.com/images/${data.image}`
+                      : defaultImage
+                  }
+                  alt={data.name}
+                />
               </div>
               {/* item details */}
               <div className='checkout__item-data'>
                 <div className='checkout-title'>
-                  <div>{data.title}</div>
-                  <div className='close'>X</div>
+                  <div>{data.name}</div>
+                  <div className='close' onClick={() => handleRemove(data._id)}>
+                    X
+                  </div>
                 </div>
                 <div className='checkout-btns'>
-                  <div className='btn add-btn'>+</div>
-                  <div>{1}</div>
-                  <div className='btn remove-btn'>-</div>
-                  <h5>Ks 3000</h5>
+                  <div className='btn add-btn' onClick={() => onAdd(data)}>
+                    +
+                  </div>
+                  <div>{data.count}</div>
+                  <div
+                    className='btn remove-btn'
+                    onClick={() => onRemove(data)}
+                  >
+                    -
+                  </div>
+                  <h5>
+                    <small>Ks</small> {Number(data.price) * Number(data.count)}
+                  </h5>
                 </div>
               </div>
             </div>
@@ -39,17 +72,17 @@ const Checkout = ({ closeModal, selectedItems }) => {
         <div className='checkout-total'>
           <div>
             <div>Subtotal</div>
-            <div className='price-amount'>Ks 9000</div>
+            <div className='price-amount'>Ks {totalPrice}</div>
           </div>
           <div>
             <div>Tax (5%)</div>
-            <div className='price-amount'>Ks 450</div>
+            <div className='price-amount'>Ks {taxPrice}</div>
           </div>
           <div className='total'>
             <div>Total</div>
-            <div className='total-amount'>Ks 9450</div>
+            <div className='total-amount'>Ks {totalPrice + taxPrice}</div>
           </div>
-          <button>Pay Now</button>
+          <button onClick={onOrder}>Pay Now</button>
         </div>
       </div>
     </>

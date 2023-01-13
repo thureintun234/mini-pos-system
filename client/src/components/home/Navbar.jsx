@@ -5,7 +5,14 @@ import { HiShoppingCart } from 'react-icons/hi';
 
 import './navbar.scss';
 
-const Navbar = ({ itemAdded = 0, onToggle, isOpen = false }) => {
+const Navbar = ({
+  itemAdded = 0,
+  onToggle,
+  isOpen = false,
+  search,
+  onChange,
+  onSearch
+}) => {
   return (
     <nav className='nav'>
       <img src={logo} alt='logo' />
@@ -13,8 +20,13 @@ const Navbar = ({ itemAdded = 0, onToggle, isOpen = false }) => {
       <div className='nav-left'>
         {/* search bar */}
         <div className='nav-search'>
-          <input type='text' placeholder='Search' />
-          <button>
+          <input
+            type='text'
+            placeholder='Search'
+            value={search}
+            onChange={onChange}
+          />
+          <button onClick={() => onSearch(search)}>
             <BiSearch />
           </button>
         </div>
