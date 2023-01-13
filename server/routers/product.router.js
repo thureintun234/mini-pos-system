@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 
 router.post('/', auth, upload.single('image'), async (req, res) => {
   const imageName = `product_${uuidv4()}`;
-  if (req.file.buffer) {
+  if (req?.file) {
     await sharp(req.file.buffer)
       .resize({ width: 250, height: 250 })
       .png()
@@ -30,14 +30,20 @@ router.post('/', auth, upload.single('image'), async (req, res) => {
 
 router.get('/', auth, async (req, res) => {
   try {
-    const products = await Product.find({});
-    res.json(products);
+    if (req.query.category) {
+      // search by category
+      const products = await Product.find({ category: req.query.category });
+      res.json(products);
+    } else {
+      const products = await Product.find({});
+      res.json(products);
+    }
   } catch (e) {
     res.status(500).send(e);
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
   const id = req.params.id;
   try {
     const product = await Product.findById(id);
@@ -52,7 +58,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', auth, async (req, res, next) => {
   const id = req.params.id;
   try {
     await Product.findByIdAndDelete(id);
@@ -62,9 +68,9 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', auth, upload.single('image'), async (req, res, next) => {
   const id = req.params.id;
-  if (req.file) {
+  if (req?.file) {
     await sharp(req.file.buffer)
       .resize({ width: 250, height: 250 })
       .png()

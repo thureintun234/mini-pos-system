@@ -25,7 +25,7 @@ mongoose
 app.use(express.json());
 app.use(cors());
 app.use(middleware.requestLogger);
-app.use(helmet());
+app.use(helmet({ crossOriginResourcePolicy: false }));
 
 // routers
 app.use('/api/users', userRouter);
