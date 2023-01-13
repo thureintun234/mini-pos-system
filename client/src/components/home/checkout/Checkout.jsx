@@ -38,6 +38,7 @@ const Checkout = ({
                       ? `https://mini-pos-system.onrender.com/images/${data.image}`
                       : defaultImage
                   }
+                  crossOrigin='anonymous'
                   alt={data.name}
                 />
               </div>
